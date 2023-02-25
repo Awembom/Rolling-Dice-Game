@@ -59,10 +59,12 @@ def operation(W_player_data):
                 i = 0
             for keys in W_player_data.keys():
                 if W_player_data[keys] == check[i]:
+                    print("the is a repetition is player values, play again: ")
+                    print(f"current player is  {keys}")
                     Ncheck[keys] = roll_dice()
                     i += 1
             check = sorted(Ncheck.values())
-            if len(check) == 0:
+            if len(check) == 1:
                 break
                 
         print(check)
