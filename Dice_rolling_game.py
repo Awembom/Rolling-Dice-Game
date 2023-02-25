@@ -50,20 +50,6 @@ def operation(W_player_data):
             W_player_data[names] = roll_dice()
         check = sorted(W_player_data.values())
 
-        #block to make sure if more than 1 user has the minimum output, those tow will play play until just one is left 
-        Ncheck = {}
-        while True:
-            for numbers in check:
-                if numbers > check[0]:
-                    check.remove(numbers)
-                i = 0
-            for keys in W_player_data.keys():
-                if W_player_data[keys] == check[i]:
-                    Ncheck[keys] = roll_dice()
-                    i += 1
-            check = sorted(Ncheck.values())
-            if len(check) == 0:
-                break
                 
         print(check)
         print(f"this is the results of this round: {W_player_data}")
