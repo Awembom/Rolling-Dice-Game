@@ -51,12 +51,12 @@ def operation(W_player_data):
         check = sorted(W_player_data.values())
         print(f"this is the results of this round: {W_player_data}")
         
+        
         #block to make sure if more than 1 user has the minimum output, those tow will play play until just one is left
-        keys = [k for k, v in W_player_data.items() if v == check[0]]
+        keys = [k for k, v in W_player_data.items() if v == check[0]] #this gives allthe keys with values check 0
                 
         while True:
             if len(keys) > 1:
-                print(check)
                 keys = [k for k, v in W_player_data.items() if v == check[0]]
                 print(f"the following people have the same minimum results: {keys}, so they will play again: ")
                 Ncheck = {}
@@ -72,9 +72,6 @@ def operation(W_player_data):
                     continue
             else:
                 break
-
-        #print(check)
-        
 
         for keys in W_player_data.keys():
             if W_player_data[keys] == check[0]:
