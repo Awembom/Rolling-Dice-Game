@@ -49,26 +49,32 @@ def operation(W_player_data):
             print(f"Current player is:  {names}")            
             W_player_data[names] = roll_dice()
         check = sorted(W_player_data.values())
-
-        #block to make sure if more than 1 user has the minimum output, those tow will play play until just one is left 
-        Ncheck = {}
-        while True:
-            for numbers in check:
-                if numbers > check[0]:
-                    check.remove(numbers)
-                i = 0
-            for keys in W_player_data.keys():
-                if W_player_data[keys] == check[i]:
-                    print("the is a repetition is player values, play again: ")
-                    print(f"current player is  {keys}")
-                    Ncheck[keys] = roll_dice()
-                    i += 1
-            check = sorted(Ncheck.values())
-            if len(check) == 1:
-                break
-                
-        print(check)
         print(f"this is the results of this round: {W_player_data}")
+        #block to make sure if more than 1 user has the minimum output, those tow will play play until just one is left
+        keys = [k for k, v in W_player_data.items() if v == check[0]]
+                
+
+        while True:
+            if len(keys) > 1:
+                print(check)
+                keys = [k for k, v in W_player_data.items() if v == check[0]]
+                print(f"the following people have the same minimum results: {keys}, so they will play again: ")
+                Ncheck = {}
+                for names in keys:
+                    print(f"curent player is {names}")
+                    Ncheck[names] = roll_dice()
+                check = sorted(Ncheck.values())
+                if check[0] < check[1]:
+                    eliminated = [k for k, v in W_player_data.items() if v == check[0]]
+                    print(f"after this sub round, {eliminated} has been eliminated")
+                    del(W_player_data[eliminated])
+                else:
+                    continue
+            else:
+                break
+
+        #print(check)
+        
 
         for keys in W_player_data.keys():
             if W_player_data[keys] == check[0]:
