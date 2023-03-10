@@ -1,6 +1,7 @@
 # A rolling Dice game
 
 #code structure
+    
     the programming language is python with a few functions used, 
     a function is used to collect player data (take user data) which
     is saved in a list, then another function (roll dice) is used to 
